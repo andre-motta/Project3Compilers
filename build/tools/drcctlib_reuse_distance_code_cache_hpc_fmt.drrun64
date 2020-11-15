@@ -1,0 +1,2 @@
+# drcctlib_reuse_distance_code_cache_hpc_fmt tool config file
+CLIENT_REL=clients/lib64/release/libdrcctlib_reuse_distance_code_cache_hpc_fmt.so

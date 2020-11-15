@@ -1,0 +1,2 @@
+# drcctlib_stack_memory_rate tool config file
+CLIENT_REL=clients/lib64/release/libdrcctlib_stack_memory_rate.so

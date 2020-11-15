@@ -1,0 +1,2 @@
+# drcctlib_heap_overflow tool config file
+CLIENT_REL=tools/lib64/release/libdrcctlib_heap_overflow.so

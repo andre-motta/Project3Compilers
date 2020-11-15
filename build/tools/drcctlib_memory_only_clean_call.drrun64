@@ -1,0 +1,2 @@
+# drcctlib_memory_only_clean_call tool config file
+CLIENT_REL=clients/lib64/release/libdrcctlib_memory_only_clean_call.so

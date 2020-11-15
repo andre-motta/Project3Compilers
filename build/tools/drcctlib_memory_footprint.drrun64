@@ -1,0 +1,2 @@
+# drcctlib_memory_footprint tool config file
+CLIENT_REL=clients/lib64/release/libdrcctlib_memory_footprint.so

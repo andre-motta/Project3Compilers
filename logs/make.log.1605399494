@@ -1,0 +1,150 @@
+[  0%] Built target generate_syslog
+[  0%] Built target drcachesim_ops
+[  1%] Built target drcpusim_ops
+[  1%] Built target nudgeunix
+[  2%] Built target drloader
+[  3%] Built target run_in_bg
+[  3%] Built target runstats
+[  3%] Built target api_headers
+[  3%] Built target drmemfuncs
+[  5%] Built target drlibc
+[  6%] Built target drmemtrace_basic_counts
+[  6%] Built target drmemtrace_func_view
+[  6%] Built target drmemtrace_reuse_time
+[  7%] Built target drmemtrace_reuse_distance
+[  7%] Built target drmemtrace_histogram
+[ 11%] Built target drmemtrace_simulator
+[ 14%] Built target drdecode
+[ 15%] Built target drpreload
+[ 16%] Built target drfrontendlib
+[ 17%] Built target drinjectlib
+[ 17%] Built target drdisas
+[ 17%] Built target directory_iterator
+[ 36%] Built target dynamorio_static
+[ 37%] Built target drconfiglib
+[ 55%] Built target dynamorio
+[ 56%] Built target drmemtrace_view
+[ 57%] Built target drmemtrace_analyzer
+[ 58%] Built target drconfig
+[ 59%] Built target drcontainers
+[ 60%] Built target drinject
+[ 60%] Built target drrun
+[ 61%] Built target drmemtrace_opcode_mix
+[ 62%] Built target drmgr_static
+[ 63%] Built target histogram_launcher
+[ 63%] Built target drmgr
+[ 65%] Built target drsyms
+[ 67%] Built target drsyms_static
+[ 67%] Built target drutil
+Scanning dependencies of target drwrap_static
+Scanning dependencies of target drwrap
+[ 67%] Built target drsyms_bench
+[ 68%] Built target drreg_static
+[ 68%] Building ASM object ext/drwrap/CMakeFiles/drwrap.dir/drwrap_asm_x86.asm.o
+[ 69%] Building ASM object ext/drwrap/CMakeFiles/drwrap_static.dir/drwrap_asm_x86.asm.o
+[ 69%] Built target drutil_static
+[ 69%] Built target drreg
+[ 69%] Built target drbbdup_static
+[ 70%] Built target drx_static
+[ 71%] Built target drbbdup
+[ 71%] Built target drx
+[ 72%] Built target drmemtrace_raw2trace
+[ 72%] Linking C shared library ../lib64/release/libdrwrap.so
+[ 72%] Built target drcovlib_static
+[ 72%] Linking C static library ../lib64/release/libdrwrap_static.a
+[ 73%] Built target drcovlib
+[ 74%] Built target drcpusim
+[ 75%] Built target drraw2trace
+[ 76%] Built target drcov2lcov
+[ 77%] Built target opcode_mix_launcher
+[ 80%] Built target drcachesim
+[ 80%] Built target drcov
+[ 80%] Built target drwrap_static
+[ 81%] Built target drwrap
+[ 82%] Linking CXX shared library ../lib64/release/libdrmemtrace.so
+[ 84%] Built target drmemtrace_static
+[ 84%] Built target drcctlib_static
+[ 84%] Linking CXX shared library ../lib64/release/libdrcctlib.so
+[ 85%] Built target drcctlib
+Scanning dependencies of target drcctlib_heap_overflow
+[ 85%] Linking CXX shared library ../lib64/release/libdrcctlib_reuse_distance_mpi.so
+[ 85%] Linking CXX shared library ../lib64/release/libdrcctlib_memory_only_clean_call.so
+[ 85%] Linking CXX shared library ../lib64/release/libdrcctlib_reuse_distance.so
+[ 85%] Linking CXX shared library ../lib64/release/libdrcctlib_all_instr_cct_no_cache.so
+[ 85%] Linking CXX shared library ../lib64/release/libdrcctlib_memory_with_data_centric_clean_call.so
+[ 85%] Linking CXX shared library ../lib64/release/libdrcctlib_instr_statistics.so
+[ 85%] Linking CXX shared library ../lib64/release/libdrcctlib_memory_with_data_centric_with_search_clean_call.so
+[ 85%] Linking CXX shared library ../lib64/release/libdrcctlib_all_instr_cct_with_data_centric.so
+[ 86%] Linking CXX shared library ../lib64/release/libdrcctlib_cct_only.so
+[ 86%] Building CXX object clients/drcctlib_heap_overflow/CMakeFiles/drcctlib_heap_overflow.dir/drcctlib_heap_overflow.cpp.o
+[ 86%] Linking CXX shared library ../lib64/release/libdrcctlib_reuse_distance_code_cache_hpc_fmt.so
+[ 90%] Linking CXX shared library ../lib64/release/libdrcctlib_memory_with_data_centric_with_search.so
+[ 90%] Linking CXX shared library ../lib64/release/libdrcctlib_memory_with_data_centric.so
+[ 89%] Linking CXX shared library ../lib64/release/libdrcctlib_cct_only_clean_call.so
+[ 89%] Linking CXX shared library ../lib64/release/libdrcctlib_memory_footprint.so
+[ 89%] Linking CXX shared library ../lib64/release/libdrcctlib_cct_only_no_cache.so
+[ 90%] Linking CXX shared library ../lib64/release/libdrcctlib_all_instr_cct.so
+[ 86%] Linking CXX shared library ../lib64/release/libdrcctlib_instr_statistics_clean_call.so
+[ 90%] Linking CXX shared library ../lib64/release/libdrcctlib_stack_memory_rate.so
+[ 90%] Linking CXX shared library ../lib64/release/libdrcctlib_instr_statistics_hpc_fmt.so
+[ 90%] Linking CXX shared library ../lib64/release/libdrcctlib_memory_only.so
+[ 90%] Linking CXX shared library ../lib64/release/libdrcctlib_reuse_distance_hpc_fmt.so
+[ 90%] Linking CXX shared library ../lib64/release/libdrcctlib_reuse_distance_client_cache.so
+[ 90%] Linking CXX shared library ../lib64/release/libdrcctlib_all_instr_cct_hpc_fmt.so
+[ 90%] Linking CXX shared library ../lib64/release/libdrcctlib_overhead_test.so
+[ 91%] Linking CXX shared library ../lib64/release/libdrcctlib_reuse_distance_hpc_fmt_for_sweep3d.so
+Usage: pass to drconfig or drrun: -t drcachesim
+[ 93%] Built target drmemtrace
+Usage: pass to drconfig or drrun: -t drcctlib_all_instr_cct_no_cache
+Usage: pass to drconfig or drrun: -t drcctlib_memory_only
+Usage: pass to drconfig or drrun: -t drcctlib_all_instr_cct_with_data_centric
+Usage: pass to drconfig or drrun: -t drcctlib_memory_with_data_centric_clean_call
+Usage: pass to drconfig or drrun: -t drcctlib_cct_only
+Usage: pass to drconfig or drrun: -t drcctlib_all_instr_cct_hpc_fmt
+Usage: pass to drconfig or drrun: -t drcctlib_memory_with_data_centric
+Usage: pass to drconfig or drrun: -t drcctlib_memory_with_data_centric_with_search_clean_call
+Usage: pass to drconfig or drrun: -t drcctlib_cct_only_clean_call
+[ 93%] Built target drcctlib_all_instr_cct_no_cache
+[ 94%] Built target drcctlib_all_instr_cct_with_data_centric
+Usage: pass to drconfig or drrun: -t drcctlib_all_instr_cct
+[ 94%] Built target drcctlib_cct_only
+Usage: pass to drconfig or drrun: -t drcctlib_instr_statistics
+Usage: pass to drconfig or drrun: -t drcctlib_instr_statistics_clean_call
+Usage: pass to drconfig or drrun: -t drcctlib_overhead_test
+[ 95%] Built target drcctlib_memory_only
+[ 95%] Built target drcctlib_memory_with_data_centric_with_search_clean_call
+Usage: pass to drconfig or drrun: -t drcctlib_cct_only_no_cache
+Usage: pass to drconfig or drrun: -t drcctlib_memory_with_data_centric_with_search
+Usage: pass to drconfig or drrun: -t drcctlib_memory_only_clean_call
+[ 95%] Built target drcctlib_memory_with_data_centric_clean_call
+[ 96%] Built target drcctlib_cct_only_clean_call
+Usage: pass to drconfig or drrun: -t drcctlib_stack_memory_rate
+[ 96%] Built target drcctlib_all_instr_cct_hpc_fmt
+[ 96%] Built target drcctlib_instr_statistics
+[ 96%] Built target drcctlib_overhead_test
+[ 96%] Built target drcctlib_all_instr_cct
+[ 96%] Built target drcctlib_instr_statistics_clean_call
+[ 96%] Built target drcctlib_memory_with_data_centric
+[ 96%] Built target drcctlib_cct_only_no_cache
+[ 96%] Built target drcctlib_memory_with_data_centric_with_search
+[ 96%] Built target drcctlib_memory_only_clean_call
+[ 96%] Built target drcctlib_stack_memory_rate
+Usage: pass to drconfig or drrun: -t drcctlib_reuse_distance_mpi
+Usage: pass to drconfig or drrun: -t drcctlib_reuse_distance_code_cache_hpc_fmt
+Usage: pass to drconfig or drrun: -t drcctlib_instr_statistics_hpc_fmt
+Usage: pass to drconfig or drrun: -t drcctlib_reuse_distance_hpc_fmt
+Usage: pass to drconfig or drrun: -t drcctlib_reuse_distance
+Usage: pass to drconfig or drrun: -t drcctlib_reuse_distance_client_cache
+Usage: pass to drconfig or drrun: -t drcctlib_reuse_distance_hpc_fmt_for_sweep3d
+Usage: pass to drconfig or drrun: -t drcctlib_memory_footprint
+[ 97%] Built target drcctlib_reuse_distance
+[ 98%] Built target drcctlib_reuse_distance_code_cache_hpc_fmt
+[ 98%] Built target drcctlib_reuse_distance_mpi
+[ 98%] Built target drcctlib_reuse_distance_hpc_fmt
+[ 98%] Built target drcctlib_instr_statistics_hpc_fmt
+[ 98%] Built target drcctlib_reuse_distance_hpc_fmt_for_sweep3d
+[ 98%] Built target drcctlib_memory_footprint
+[ 98%] Built target drcctlib_reuse_distance_client_cache
+[100%] Linking CXX shared library ../lib64/release/libdrcctlib_heap_overflow.so
+Usage: pass to drconfig or drrun: -t drcctlib_heap_overflow
+[100%] Built target drcctlib_heap_overflow

@@ -30,7 +30,7 @@
 #define SHOW_RESULTS
 #undef SHOW_RESULTS
 
-std::map<app_pc, app_pc> addr_range;
+std::map<context_handle_t, std::pair<app_pc, app_pc>> addr_range;
 
 static int tls_idx;
 
@@ -49,20 +49,21 @@ static uint tls_offs;
 #    define OPND_CREATE_CCT_INT OPND_CREATE_INT32
 #endif
 
-int check_memory_access(app_pc addr)
+#define REDZONE_RANGE 10
+
+std::pair<bool, context_handle_t> check_redzone(app_pc addr)
 {
-	if (!addr_range.size()) return 0;
+	context_handle_t stand = 0;
 
-	std::map<app_pc, app_pc>::iterator it = addr_range.begin();
-	if (addr < it->first && addr >= it->first - 8) return -1;
+	auto it = addr_range.begin();
+	for (; it != addr_range.end(); it++){
+		if( (it->second.first - REDZONE_RANGE < addr && addr < it->second.first ) || (it->second.second < addr && addr < it->second.second + REDZONE_RANGE)) 
+			return std::make_pair(true, it->first);
+		
+	}
 
-	int i = 0;
-	for (; it != addr_range.end(); ++it, ++i)
-		if (addr >= it->first && addr <= it->second) return i;
+	return std::make_pair(false, stand);
 	
-	if (addr > (--it)->second + 8)
-		return i;
-	return -1;
 }
 
 typedef struct _mem_ref_t {
@@ -143,10 +144,13 @@ InsertMemCleanCall(int slot, instr_t* instr, instr_type type, int num)
     per_thread_t *pt = (per_thread_t *)drmgr_get_tls_field(drcontext, tls_idx);
 
 	app_pc addr = (&pt->cur_buf_list[num])->addr;
-	if (check_memory_access(addr) == -1)
+	std::pair<bool, context_handle_t> ret = check_redzone(addr);
+	if (ret.first)
 	{
-		std::printf("Bad memory access %p\n", addr);
+		std::printf("---------Bad memory access at  %p---------------\n\n", addr);
 		drcctlib_print_full_cct(1, cur_ctxt, false, true, 0);
+		std::printf("-----------Redzone of the malloc at context:--------------------\n\n");
+		drcctlib_print_full_cct(1, ret.second, false, true, 0);
 	}
 
     BUF_PTR(pt->cur_buf, mem_ref_t, INSTRACE_TLS_OFFS_BUF_PTR) = pt->cur_buf_list;
@@ -304,11 +308,11 @@ wrap_post(void *wrapcxt, void *user_data)
 
 	void* drcontext = dr_get_current_drcontext();
 	context_handle_t ctxt_hnl = drcctlib_get_context_handle(drcontext, 0);
-	printf("Malloc context:\n");
+	//printf("Malloc context:\n");
 	//drcctlib_print_full_cct(1, ctxt_hnl, true, false, 1);
-	printf("\n");
+	//printf("\n");
 
-	;addr_range[static_cast<app_pc>(addr)] = static_cast<app_pc>(addr+sz);
+	addr_range[ctxt_hnl] = std::make_pair(addr, addr+sz);
     /* test out-of-memory by having a random moderately-large alloc fail */
 #ifdef SHOW_RESULTS /* we want determinism in our test suite */
 

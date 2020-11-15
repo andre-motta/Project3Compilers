@@ -1,0 +1,2 @@
+# drcctlib_all_instr_cct_hpc_fmt tool config file
+CLIENT_REL=clients/lib64/release/libdrcctlib_all_instr_cct_hpc_fmt.so

@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/alustos/Project3Compilers/dynamorio/core/arch/asm_defines.asm
+configure.h
+/home/alustos/Project3Compilers/dynamorio/core/arch/configure.h
+
+/home/alustos/Project3Compilers/dynamorio/core/arch/x86/x86_asm_defines.asm
+
+/home/alustos/Project3Compilers/dynamorio/core/drlibc/drlibc_x86.asm
+../arch/asm_defines.asm
+/home/alustos/Project3Compilers/dynamorio/core/arch/asm_defines.asm
+../arch/x86/x86_asm_defines.asm
+/home/alustos/Project3Compilers/dynamorio/core/arch/x86/x86_asm_defines.asm
+include/syscall_mach.h
+/home/alustos/Project3Compilers/dynamorio/core/drlibc/include/syscall_mach.h
+
+/home/alustos/Project3Compilers/dynamorio/core/drlibc/drlibc_xarch.asm
+../arch/asm_defines.asm
+/home/alustos/Project3Compilers/dynamorio/core/arch/asm_defines.asm
+
+/home/alustos/Project3Compilers/dynamorio/core/unix/include/syscall_mach.h
+
+configure.h
+sys/types.h
+-
+

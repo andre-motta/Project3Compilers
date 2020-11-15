@@ -1,0 +1,2 @@
+# drcctlib_memory_with_data_centric tool config file
+CLIENT_REL=clients/lib64/release/libdrcctlib_memory_with_data_centric.so

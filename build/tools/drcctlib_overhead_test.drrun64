@@ -1,0 +1,2 @@
+# drcctlib_overhead_test tool config file
+CLIENT_REL=clients/lib64/release/libdrcctlib_overhead_test.so

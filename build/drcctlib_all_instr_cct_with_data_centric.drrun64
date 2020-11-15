@@ -1,0 +1,2 @@
+# drcctlib_all_instr_cct_with_data_centric tool config file
+CLIENT_REL=tools/lib64/release/libdrcctlib_all_instr_cct_with_data_centric.so

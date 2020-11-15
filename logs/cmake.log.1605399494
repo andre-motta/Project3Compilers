@@ -1,0 +1,10 @@
+*** /usr/bin/git log failed: ***
+fatal: not a git repository: /home/alustos/Project3Compilers/dynamorio/../.git/modules/dynamorio
+
+-- Version number: 8.0.18581
+-- WARNING: vera++ not found: disabling code style checks
+-- WARNING: Could not find Qt 5: DrGUI will NOT be built
+--   Point CMake variable Qt5Widgets_DIR at the Qt5WidgetsConfig.cmake directory
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/alustos/Project3Compilers/build

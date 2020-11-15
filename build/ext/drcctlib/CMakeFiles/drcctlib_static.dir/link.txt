@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../lib64/release/libdrcctlib_static.a  CMakeFiles/drcctlib_static.dir/splay_tree.cpp.o CMakeFiles/drcctlib_static.dir/drcctlib.cpp.o CMakeFiles/drcctlib_static.dir/drcctlib_hpcviewer_format.cpp.o
+/usr/bin/ranlib ../lib64/release/libdrcctlib_static.a
