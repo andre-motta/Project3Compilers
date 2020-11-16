@@ -30,7 +30,7 @@
 #define SHOW_RESULTS
 #undef SHOW_RESULTS
 
-std::map<context_handle_t, std::pair<app_pc, app_pc>> addr_range;
+std::map<context_handle_t, std::pair<app_pc, app_pc>> addr_map;
 
 static int tls_idx;
 
@@ -49,14 +49,14 @@ static uint tls_offs;
 #    define OPND_CREATE_CCT_INT OPND_CREATE_INT32
 #endif
 
-#define REDZONE_RANGE 10
+#define REDZONE_RANGE 5
 
 std::pair<bool, context_handle_t> check_redzone(app_pc addr)
 {
 	context_handle_t stand = 0;
 
-	auto it = addr_range.begin();
-	for (; it != addr_range.end(); it++){
+	auto it = addr_map.begin();
+	for (; it != addr_map.end(); it++){
 		if( (it->second.first - REDZONE_RANGE < addr && addr < it->second.first ) || (it->second.second < addr && addr < it->second.second + REDZONE_RANGE)) 
 			return std::make_pair(true, it->first);
 		
@@ -102,6 +102,10 @@ wrap_pre(void *wrapcxt, OUT void **user_data);
 static void
 wrap_post(void *wrapcxt, void *user_data);
 
+static void
+free_pre(void *wrapcxt, OUT void **user_data);
+static void
+free_post(void *wrapcxt, void *user_data);
 static size_t max_malloc;
 #ifdef SHOW_RESULTS
 static uint malloc_oom;
@@ -109,6 +113,14 @@ static uint malloc_oom;
 static void *max_lock; /* to synch writes to max_malloc */
 
 #define MALLOC_ROUTINE_NAME IF_WINDOWS_ELSE("HeapAlloc", "malloc")
+
+static void
+module_free_event(void *drcontext, const module_data_t *mod, bool loaded)
+{
+	app_pc towrap = (app_pc)dr_get_proc_address(mod->handle, "free");
+	if (towrap != NULL)
+		drwrap_wrap(towrap, free_pre, free_post);
+}
 
 static void
 module_load_event(void *drcontext, const module_data_t *mod, bool loaded)
@@ -297,14 +309,22 @@ wrap_pre(void *wrapcxt, OUT void **user_data)
 }
 
 static void
+free_pre(void *wrapcxt, OUT void **user_data)
+{
+	app_pc addr = (app_pc)drwrap_get_arg(wrapcxt, 0);
+	for(auto it = addr_map.begin(); it != addr_map.end(); it++){
+		if (it->second.first == addr){
+			addr_map.erase(it);
+			break;
+		}
+	}
+}
+
+static void
 wrap_post(void *wrapcxt, void *user_data)
 {
 	app_pc addr = (app_pc) drwrap_get_retval(wrapcxt);
-	std::printf("addr_ = %p\n", addr);
     size_t sz = (size_t)user_data;
-	std::printf("size_ = %lu\n", sz);
-	std::fflush(stdout);
-	std::fflush(stdout);
 
 	void* drcontext = dr_get_current_drcontext();
 	context_handle_t ctxt_hnl = drcctlib_get_context_handle(drcontext, 0);
@@ -312,12 +332,15 @@ wrap_post(void *wrapcxt, void *user_data)
 	//drcctlib_print_full_cct(1, ctxt_hnl, true, false, 1);
 	//printf("\n");
 
-	addr_range[ctxt_hnl] = std::make_pair(addr, addr+sz);
+	addr_map[ctxt_hnl] = std::make_pair(addr, addr+sz);
     /* test out-of-memory by having a random moderately-large alloc fail */
 #ifdef SHOW_RESULTS /* we want determinism in our test suite */
 
 #endif
 }
+
+static void
+free_post(void *wrapcxt, void *user_data){}
 
 static void
 ClientExit(void)
@@ -379,6 +402,7 @@ dr_client_main(client_id_t id, int argc, const char *argv[])
 	drwrap_init();
 	dr_register_exit_event(event_exit);
 	drmgr_register_module_load_event(module_load_event);
+	drmgr_register_module_load_event(module_free_event);
 	max_lock = dr_mutex_create();
 
     drreg_options_t ops = { sizeof(ops), 4 /*max slots needed*/, false };
